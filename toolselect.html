@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tool Selector</title>
+<style>
+    /* Container for the tab selector and tools */
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center; /* Center items vertically */
+      height: 100vh; /* Set container height to full viewport height */
+    }
+  
+    /* Style for the tab selector */
+    .tab-selector {
+      display: flex;
+      flex-direction: column; /* Stack buttons vertically */
+    }
+    .tab-btn {
+      background-color: ivory; /* Soft ivory color */
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-bottom: 5px; /* Adjust spacing between buttons */
+    }
+    .tab-btn:hover {
+      background-color: #eee; /* Lighten color on hover */
+    }
+    .tab-btn.active {
+      background-color: #ccc;
+    }
+  
+    /* Style for the tools */
+    .tools {
+      flex-grow: 1; /* Allow tools to occupy remaining space */
+      margin-left: 20px; /* Add margin to separate tools from buttons */
+    }
+    .tool {
+      display: none; /* Hide all tools by default */
+    }
+    .tool.active {
+      display: block; /* Show active tool */
+    }
+    .tool iframe {
+      width: 70%;
+      height:35em;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Tab selector -->
+  <div class="tab-selector">
+    <button class="tab-btn active" onclick="openTool(event, 'tool1')">Tool 1</button>
+    <button class="tab-btn" onclick="openTool(event, 'tool2')">Tool 2</button>
+    <button class="tab-btn" onclick="openTool(event, 'tool3')">Tool 3</button>
+  </div>
+
+  <!-- Tools -->
+  <div class="tools">
+    <div id="tool1" class="tool active">
+      <!-- Content for Tool 1 -->
+      <p><iframe height="800" src="https://jss37.github.io/" title="Iframe Example" width="1200"></iframe></p>
+    </div>
+
+    <div id="tool2" class="tool">
+      <!-- Content for Tool 2 -->
+      <p><iframe height="800" src="https://jss37.github.io/" title="Iframe Example" width="1200"></iframe></p>
+    </div>
+
+    <div id="tool3" class="tool">
+      <!-- Content for Tool 3 -->
+      <p><iframe height="800" src="https://jss37.github.io/" title="Iframe Example" width="1200"></iframe></p>
+    </div>
+  </div>
+</div>
+
+<script>
+function openTool(evt, toolName) {
+  // Hide all tools and remove 'active' class from all tab buttons
+  var i, tools, tabBtns;
+  tools = document.getElementsByClassName("tool");
+  for (i = 0; i < tools.length; i++) {
+    tools[i].classList.remove("active");
+  }
+  tabBtns = document.getElementsByClassName("tab-btn");
+  for (i = 0; i < tabBtns.length; i++) {
+    tabBtns[i].classList.remove("active");
+  }
+  // Show the selected tool and set 'active' class to the clicked button
+  document.getElementById(toolName).classList.add("active");
+  evt.currentTarget.classList.add("active");
+}
+// Show the default tool when the page loads
+document.getElementById("tool1").classList.add("active");
+document.getElementsByClassName("tab-btn")[0].classList.add("active");
+</script>
+
+</body>
+</html>
