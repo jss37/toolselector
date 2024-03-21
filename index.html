@@ -49,11 +49,18 @@
       height:40em;
       border: none;
     }
+
+    .logo {
+      margin-right: 20px; /* Add space to the right of the image */
+      height: 30em;
+    }
+  
   </style>
 </head>
 <body>
 
 <div class="container">
+    <img src="/Users/jacob/Downloads/Air-Quality-Index-AQIcalculated-by-EPA.png" alt="Logo" class="logo">
   <!-- Tab selector -->
   <div class="tab-selector">
     <button class="tab-btn active" onclick="openTool(event, 'tool1')">Tool 1</button>
@@ -103,4 +110,3 @@ document.getElementsByClassName("tab-btn")[0].classList.add("active");
 
 </body>
 </html>
-
